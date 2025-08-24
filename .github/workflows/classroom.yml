@@ -13,11 +13,11 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
-    - name: Autograding Tests
-      id: autograding-tests
+    - name: Second
+      id: second
       uses: classroom-resources/autograding-command-grader@v1
       with:
-        test-name: Autograding Tests
+        test-name: Second
         setup-command: pip install pygad numpy nbformat matplotlib
         command: python ./grade_homework.py
         timeout: 10
@@ -25,6 +25,6 @@ jobs:
     - name: Autograding Reporter
       uses: classroom-resources/autograding-grading-reporter@v1
       env:
-        AUTOGRADING-TESTS_RESULTS: "${{steps.autograding-tests.outputs.result}}"
+        SECOND_RESULTS: "${{steps.second.outputs.result}}"
       with:
-        runners: autograding-tests
+        runners: second
